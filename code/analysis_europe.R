@@ -92,6 +92,10 @@ save(m3, file = "./output/m3.rda")
 save(m_fixed, file = "./output/m_fixed.rda")
 save(m_varying, file = "./output/m_varying.rda")
 
+load("./output/m1.rda")
+load("./output/m2.rda")
+load
+
 waic_compare_s <- WAIC(m_fixed, m_varying)
 model_weights(m_fixed, m_varying, weights = "waic")
 

@@ -18,4 +18,4 @@ There are 3 R-files:
 
 ## Requisites
 
-To run the R-files, the program STAN needs to be installed (to be found here [https://mc-stan.org/](https://mc-stan.org/)). Also note that it will take about 1-2 hours to run one file. The R-packages needed (most notably *tidyverse* and *brms* and the like, are listed at the top of each code file)
+To run the R-files, the program STAN needs to be installed (to be found here [https://mc-stan.org/](https://mc-stan.org/)). Also note that it will take about 1-2 hours to run one file. The R-packages needed (most notably *tidyverse* and *brms* and the like, are listed at the top of each code file).
