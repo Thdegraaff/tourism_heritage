@@ -94,7 +94,7 @@ save(m_varying, file = "./output/m_varying.rda")
 
 load("./output/m1.rda")
 load("./output/m2.rda")
-load
+load("./output/m3.rda")
 
 waic_compare_s <- WAIC(m_fixed, m_varying)
 model_weights(m_fixed, m_varying, weights = "waic")
@@ -116,7 +116,7 @@ hist <- ggplot(data = d, aes(x = log(Arrivals) ) ) +
   geom_histogram(color="black", fill="red", alpha = 0.5) + 
   theme_bw() + 
   labs(x         = "Tourist arrivals (in log)",
-       y         = "Number",
+       y         = "Frequency",
        caption   = "Source: Eurostat & national statistical offices")
 hist
 pdf("./fig/Fig1.pdf", width = 6, height = 4)
@@ -125,15 +125,15 @@ dev.off()
 
 con <- conditional_effects(m2, "WHS_cultural" ) 
 dfcon <- con[[1]]
-marg <- ggplot(data = dfcon, aes(y = estimate__, x = effect1__)) +
+marg <- ggplot(data = dfcon, aes(y = estimate__/1000, x = effect1__)) +
   geom_point(size = 4, colour = "red", alpha = 0.5) + 
   geom_line(aes(group = 1), colour = "red", size = 2, alpha = 0.5) +
-  geom_errorbar(aes(ymin=lower__, ymax=upper__), colour="black", width=.1)+
+  geom_errorbar(aes(ymin=lower__/1000, ymax=upper__/1000), colour="black", width=.1)+
   theme_minimal() + 
   labs(#title     = "Marginal effect of distance on arrivals by the number of UNESCO World Heritage Sites", 
     #subtitle  = "All other variables are fixed at mean values", 
     x         = "Number of UNESCO World Heritage Sites",
-    y         = "Tourist arrivals ",
+    y         = "Tourist arrivals (x1,000)",
     caption   = "Source: own calculations")
 marg
 pdf("./fig/Fig3.pdf", width = 6, height = 4)
